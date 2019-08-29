@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="jquery.js"></script>
+    <script src="data_generator.js"></script>
+  <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+
+  <h1 align="center">Welcome To Twiddler</h1>
+
+
+    <div id="margin">Your Username: <input id="username" type="text" name="username">
+      <form id='submit' method='get' action=''> </form>
+    </div>
+
+    </form>
+    <p><input type='text' placeholder='Enter in your tweet here'><button class='tweet'>Tweet It!</button></p>
+
+    <button class='refresh'>Check For Tweets</button>
+
+    <nav></nav>
+
+    <script>  
+
+
+    $(document).ready(function()
+    {
+      $('button').on('click', function()
+      {
+        displayTweets();
+      });
+      
+      $('.tweet').on('click', function()
+      {
+        $message = $('input').val();
+        writeTweet($message);
+        displayTweets();
+        $('input').val('');
+      })
+      $('.tweet').on('click', function()
+      {
+        $message = $('input').val();
+        writeTweet($message);
+        displayTweets();
+        $('input').val('');
+      })    
+    });   
+
+    var makeTweets = function() {
+      var $tweetDiv = $('div.tweets');
+      $tweetDiv.html('');
+      var index = streams.home.length - 1;
+      while(index >= 0) {
+        var tweet = streams.home[index];
+        var $tweet = $('<div class="tweet"></div>');
+        $tweet.appendTo($displayTweets);
+        index -= 1;
+      }
+    };
+  
+  var $body = $('nav');
+  function displayTweets (){
+    $body.html('');
+  //get timing for tweets
+    var index = streams.home.length - 1;
+    while(index >= 0){
+      var currTime = new Date
+      var tweet = streams.home[index];
+      var $tweet = $('<div></div>');
+      var $date = $('<li></li>');
+      $tweet.text('@' + tweet.user + ': ' + tweet.message).addClass(tweet.user);
+      if(currTime.getMinutes() - tweet.created_at.getMinutes() < 1)
+      {
+        $date.text(currTime.getSeconds() - tweet.created_at.getSeconds() + ' sec ago');
+      } 
+      else
+      {
+        $date.text(currTime.getMinutes() - tweet.created_at.getMinutes() + ' min ago');
+      }  
+      $tweet.appendTo($body);
+      $date.appendTo($tweet);
+      index -= 1;
+    }
+  } 
+    
+      $('nav').on('click', 'div', function(){
+        $body.html('');
+    var $user = $(this).attr('class')     
+    var index = streams.users[$user].length - 1;
+    while(index >= 0){
+      var currTime = new Date     
+      var tweet = streams.users[$user][index];
+      var $tweet = $('<div></div>');
+      var $date = $('<li></li>');
+      $tweet.text('@' + $user + ': ' + tweet.message).addClass('user');
+      if(currTime.getMinutes() - tweet.created_at.getMinutes() < 1)
+      {
+        $date.text(currTime.getSeconds() - tweet.created_at.getSeconds() + ' sec ago');
+      }
+      else
+      {
+        $date.text(currTime.getMinutes() - tweet.created_at.getMinutes() + ' min ago');
+      }
+      $tweet.appendTo($body);
+      $date.appendTo($tweet);
+        index -= 1;
+      }
+      });   
+    </script>
+  </body>
+</html>

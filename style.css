@@ -1,0 +1,57 @@
+body {
+	background: darkblue;
+}
+
+h1	{
+color: white;
+font-family: arial, sans-serif;
+font-size: 50px;
+font-weight: bold;
+margin-top: 5px;
+margin-bottom: 5px;
+
+}
+
+header{
+	background: white;
+	float: middle;
+}
+
+input {
+	width: 30%;
+}
+
+div {
+	float: middle;
+	background: white;
+	border: 1px solid black;
+	border-radius: 10px;
+	width: 60%;
+	height: 50px;
+}
+li {
+	float: right;
+	list-style: none;
+	font-style: italic;
+	background: grey;
+}
+
+p {
+	background: white;
+}
+
+.refresh {
+	background: white;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.tweet {
+	float: middle;
+	width: 25%;
+}
+div:hover{
+	background: lightGray;
+	font-weight: bold;
+	font-color: black;
+}
